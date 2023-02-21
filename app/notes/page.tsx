@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./Notes.module.css";
 import PocketBase from "pocketbase";
+import CreateNote from "./CreateNote";
 
 // this is the way to customize the caching behavior of the page for the case when using the orm
 export const dynamic = "auto",
@@ -30,9 +31,13 @@ export default async function NotesPage() {
   return (
     <div>
       <h1>Notes</h1>
-      {notes.map((note) => (
-        <Note key={note.id} note={note} />
-      ))}
+      <div className={styles.grid}>
+        {notes?.map((note) => (
+          <Note key={note.id} note={note} />
+        ))}
+      </div>
+
+      <CreateNote />
     </div>
   );
 }
