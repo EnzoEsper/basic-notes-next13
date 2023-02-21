@@ -1,10 +1,7 @@
-import './globals.css'
+import Link from "next/link";
+import "./globals.css";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       {/*
@@ -12,7 +9,15 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+        <main>
+          <nav>
+            <Link href="/">Home</Link>
+            <Link href="/notes">Notes</Link>
+          </nav>
+          {children}
+        </main>
+      </body>
     </html>
-  )
+  );
 }
